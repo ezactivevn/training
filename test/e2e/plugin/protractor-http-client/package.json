@@ -1,0 +1,69 @@
+{
+  "_from": "protractor-http-client",
+  "_id": "protractor-http-client@1.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-+O6vJz7BPijXW5YwJosAcVy4/KY=",
+  "_location": "/protractor-http-client",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "protractor-http-client",
+    "name": "protractor-http-client",
+    "escapedName": "protractor-http-client",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/protractor-http-client/-/protractor-http-client-1.0.4.tgz",
+  "_shasum": "f8eeaf273ec13e28d75b9630268b00715cb8fca6",
+  "_spec": "protractor-http-client",
+  "_where": "c:\\dev\\temp\\rugby\\client",
+  "author": {
+    "name": "Marco Dalla Vecchia",
+    "email": "mdallav@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/marcodave/protractor-http-client/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "request": "^2.83.0"
+  },
+  "deprecated": false,
+  "description": "HTTP client to be used in protractor tests",
+  "devDependencies": {
+    "@types/jasminewd2": "2.x",
+    "@types/request": "2.47.0",
+    "phantomjs-prebuilt": "^2.1.16",
+    "protractor": "^4",
+    "typescript": "^2.7"
+  },
+  "homepage": "https://github.com/marcodave/protractor-http-client",
+  "keywords": [
+    "protractor",
+    "http",
+    "rest",
+    "client",
+    "test",
+    "selenium",
+    "webdriver"
+  ],
+  "license": "MIT",
+  "main": "dist/http-client.js",
+  "name": "protractor-http-client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcodave/protractor-http-client.git"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "pretest": "tsc",
+    "test": "webdriver-manager update && protractor dist/test/protractor.conf.js"
+  },
+  "version": "1.0.4"
+}

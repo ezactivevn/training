@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      LOGIN
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2 class="login_title">{{title}}</h2>
+  <form [formGroup]="form">
+    <!-- email -->
+    <ion-item>
+      <ion-icon name='mail' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtEmail' type="email" placeholder="Email" formControlName="email">
+      </ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+    <!-- password -->
+    <ion-item>
+      <ion-icon name='lock' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtPassword' type="password" placeholder="Password" formControlName="password"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.password">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+  </form>
+  <button id='btnLogin' ion-button block type="submit" color="danger" (click)=login()>
+    Login
+  </button>
+  <ion-row>
+    <ion-col width-50>
+      <ion-label tappable id='lblOpenForgotPassword' class="login_forgot" color="danger"
+        (click)="openForgotPasswordPage()">
+        Forgot password?
+      </ion-label>
+    </ion-col>
+    <ion-col width-50>
+      <ion-label tappable id='lblRegister' class="login_register" color="danger" (click)="openRegisterPage()">
+        Register account
+      </ion-label>
+    </ion-col>
+  </ion-row>
+</ion-content>

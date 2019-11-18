@@ -1,0 +1,30 @@
+--- TOTAL PHP FILES : 10
+
+C:\dev\sgb\server\admin\controller.php
+C:\dev\sgb\server\admin\user.php
+   $user = $this->Admin->selectOne("SELECT id, role, password FROM users WHERE email = '$email'");
+   $this->Admin->update("UPDATE users SET last_logon='$today', session_id='$session_id' WHERE id=" . $u
+   $user = $this->Admin->selectOne('SELECT * FROM users WHERE id = ' . $user_id . ' AND session_id = "'
+   $user = $this->Admin->selectOne('SELECT id, role FROM users WHERE email = "'. $email .'"');
+   $this->Admin->update('UPDATE users SET password = "' . password_hash($new_password, PASSWORD_DEFAULT
+   $user = $this->Admin->selectOne("SELECT email, role, password FROM users WHERE id = $id");
+   $this->Admin->update('UPDATE users SET password = "' . password_hash($new_password, PASSWORD_DEFAULT
+   $this->Admin->update("UPDATE users SET session_id='' WHERE id=" . $user_id);
+C:\dev\sgb\server\client\booking.php
+   $bookings = $this->Client->join("SELECT * FROM bookings JOIN users ON bookings.user_id = users.id JO
+   $booking_id = $this->Client->insert("INSERT INTO `bookings`(`user_id`, `location_id`, `court_type`, 
+C:\dev\sgb\server\client\controller.php
+C:\dev\sgb\server\client\location.php
+   $locations = $this->Client->select("SELECT * FROM locations");
+C:\dev\sgb\server\client\payment.php
+   $payment_id = $this->Client->insert("INSERT INTO `payments`(`booking_id`, `token`, `status`, `create
+C:\dev\sgb\server\client\user.php
+   $user = $this->Client->selectOne("SELECT * FROM users WHERE email = '$email'");
+   $this->Client->update("UPDATE users SET last_logon='$today' WHERE id=" . $user['id']);
+   $user = $this->Client->selectOne('SELECT id, role FROM users WHERE email = "'. $email .'"');
+   $user_id = $this->Client->insert($sql);
+   $user = $this->Client->selectOne('SELECT id, role FROM users WHERE email = "'. $email .'"');
+   $this->Client->update('UPDATE users SET password = "' . $password . '" WHERE email = "'. $email .'"'
+C:\dev\sgb\server\public\config.php
+C:\dev\sgb\server\public\index.php
+C:\dev\sgb\server\public\utility.php

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Court Booking</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines no-padding>
+    <ion-card *ngFor="let booking of bookings">
+      <ion-item>
+        <h2 id="lblLocationName">{{ booking.locations.name }}</h2>
+        <h3 id="lblUserName">{{ booking.users.first_name }} {{ booking.users.last_name }}</h3>
+        <p id="lblDate">{{ booking.bookings.date | date:'fullDate' }}</p>
+        <p id="lblTime">{{ booking.bookings.start_time | time }} - {{ booking.bookings.end_time | time }}</p>
+        <ion-badge color="secondary" item-end>{{ booking.payments.status }}</ion-badge>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <button id='btnNewBooking' ion-button block color="danger" (click)=openNewBookingPage()>
+    New booking
+  </button>
+</ion-footer>

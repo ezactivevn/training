@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Stripe Payment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+
+    <ion-card no-margin>
+      <ion-card-content>
+        <!-- Card number -->
+        <ion-item>
+          <ion-label floating>Card number</ion-label>
+          <ion-input id='txtCardNumber' type="text" formControlName="number"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.number">
+          <ion-item no-lines class="error-message"
+            *ngIf="form.get('number').hasError(validation.type) && (form.get('number').dirty || form.get('number').touched || submitAttempt) && submitAttempt">
+            <p>{{ validation.message }}</p>
+          </ion-item>
+        </ng-container>
+    
+        <ion-row>
+          <!-- Expiry month -->
+          <ion-col col-6 no-padding>
+            <ion-item>
+              <ion-label floating>Expiry month</ion-label>
+              <ion-input id='txtExpMonth' type="text" formControlName="expMonth"></ion-input>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.expMonth">
+              <ion-item no-lines class="error-message"
+                *ngIf="form.get('expMonth').hasError(validation.type) && (form.get('expMonth').dirty || form.get('expMonth').touched || submitAttempt) && submitAttempt">
+                <p>{{ validation.message }}</p>
+              </ion-item>
+            </ng-container>
+          </ion-col>
+      
+          <!-- Expiry year -->
+          <ion-col col-6 no-padding>
+            <ion-item>
+              <ion-label floating>Expiry year</ion-label>
+              <ion-input id='txtExpYear' type="text" formControlName="expYear"></ion-input>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.expYear">
+              <ion-item no-lines class="error-message"
+                *ngIf="form.get('expYear').hasError(validation.type) && (form.get('expYear').dirty || form.get('expYear').touched || submitAttempt) && submitAttempt">
+                <p>{{ validation.message }}</p>
+              </ion-item>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+        
+        <!-- CVC -->
+        <ion-item>
+          <ion-label floating>CVC</ion-label>
+          <ion-input id='txtCvc' type="text" formControlName="cvc"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.cvc">
+          <ion-item no-lines class="error-message"
+            *ngIf="form.get('cvc').hasError(validation.type) && (form.get('cvc').dirty || form.get('cvc').touched || submitAttempt) && submitAttempt">
+            <p>{{ validation.message }}</p>
+          </ion-item>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+
+  </form>
+
+  <button id='btnPayNow' ion-button block type="submit" color="danger" (click)=payNow()>
+    Pay now
+  </button>
+</ion-content>

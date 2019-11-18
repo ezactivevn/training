@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>New booking</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card no-margin>
+    <form [formGroup]="form">
+
+      <!-- Location -->
+      <ion-item>
+        <ion-label floating>Location</ion-label>
+        <ion-select id='selLocation' formControlName="location">
+          <ion-option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.location">
+        <ion-item no-lines class="error-message"
+          *ngIf="form.get('location').hasError(validation.type) && (form.get('location').dirty || form.get('location').touched || submitAttempt) && submitAttempt">
+          <p>{{ validation.message }}</p>
+        </ion-item>
+      </ng-container>
+
+      <!-- Court type -->
+      <ion-item>
+        <ion-label floating>Court type</ion-label>
+        <ion-select id='selCourtType' formControlName="court_type">
+          <ion-option *ngFor="let type of courtTypes" value="{{type.id}}">{{type.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.court_type">
+        <ion-item no-lines class="error-message"
+          *ngIf="form.get('court_type').hasError(validation.type) && (form.get('court_type').dirty || form.get('court_type').touched || submitAttempt) && submitAttempt">
+          <p>{{ validation.message }}</p>
+        </ion-item>
+      </ng-container>
+
+      <!-- Date -->
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime id='dtpDate' displayFormat="DDDD DD-MMM-YYYY" [yearValues]="yearValues" doneText="OK" formControlName="date"></ion-datetime>
+      </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.date">
+        <ion-item no-lines class="error-message"
+          *ngIf="form.get('date').hasError(validation.type) && (form.get('date').dirty || form.get('date').touched || submitAttempt) && submitAttempt">
+          <p>{{ validation.message }}</p>
+        </ion-item>
+      </ng-container>
+
+      <ion-row>
+        <!-- Start time -->
+        <ion-col col-6 no-padding>
+          <ion-item>
+            <ion-label floating>Start time</ion-label>
+            <ion-datetime id='dtpStartTime' displayFormat="HH:mm" minuteValues="0, 30" formControlName="start_time"></ion-datetime>
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.start_time">
+            <ion-item no-lines class="error-message"
+              *ngIf="form.get('start_time').hasError(validation.type) && (form.get('start_time').dirty || form.get('start_time').touched || submitAttempt) && submitAttempt">
+              <p>{{ validation.message }}</p>
+            </ion-item>
+          </ng-container>
+        </ion-col>
+
+        <!-- End time -->
+        <ion-col col-6 no-padding>
+          <ion-item>
+            <ion-label floating>End time</ion-label>
+            <ion-datetime id='dtpEndTime' displayFormat="HH:mm" minuteValues="0, 30" formControlName="end_time"></ion-datetime>
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.end_time">
+            <ion-item no-lines class="error-message"
+              *ngIf="form.get('end_time').hasError(validation.type) && (form.get('end_time').dirty || form.get('end_time').touched || submitAttempt) && submitAttempt">
+              <p>{{ validation.message }}</p>
+            </ion-item>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </ion-card>
+
+  <button id='btnBookNow' ion-button block type="submit" color="danger" (click)=bookNow()>
+    Book now
+  </button>
+</ion-content>

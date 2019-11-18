@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>REGISTER</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    
+    <!-- first name -->
+    <ion-item>
+      <ion-icon name='person' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtFirstName' type="text" placeholder="First name" formControlName="first_name"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.first_name">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('first_name').hasError(validation.type) && (form.get('first_name').dirty || form.get('first_name').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+    
+    <!-- last name -->
+    <ion-item>
+      <ion-icon name='person' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtLastName' type="text" placeholder="Last name" formControlName="last_name"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.last_name">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('last_name').hasError(validation.type) && (form.get('last_name').dirty || form.get('last_name').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+    
+    <!-- mobile -->
+    <ion-item>
+      <ion-icon name='call' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtMobile' type="text" placeholder="Mobile" formControlName="mobile"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.mobile">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('mobile').hasError(validation.type) && (form.get('mobile').dirty || form.get('mobile').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+    
+    <!-- email -->
+    <ion-item>
+      <ion-icon name='mail' color="icon_gray" item-left></ion-icon>
+      <ion-input id='txtEmail' type="email" placeholder="Email" formControlName="email">
+      </ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <ion-item no-lines class="error-message"
+        *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched || submitAttempt) && submitAttempt">
+        <p>{{ validation.message }}</p>
+      </ion-item>
+    </ng-container>
+
+  </form>
+
+  <button id='btnRegister' ion-button block type="submit" color="danger" (click)=register()>
+    Register
+  </button>
+  
+</ion-content>

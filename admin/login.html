@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="sgbApp">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>SG Basketball - Login</title>
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="../../framework/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../framework/node_modules/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" />
+
+	<!-- RTL support - for demo only -->
+	<script src="app/cube/demo-rtl.js"></script>
+
+	<!-- libraries -->
+	<link rel="stylesheet" type="text/css" href="../../framework/node_modules/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../framework/node_modules/nanoscroller/bin/css/nanoscroller.css" />
+
+	<!-- global styles -->
+	<link rel="stylesheet" type="text/css" href="../../framework/node_modules/zakumi-admin/css/compiled/theme_styles.css" />
+
+	<!-- Favicon -->
+	<link type="image/x-icon" href="images/favicon.png" rel="shortcut icon"/>
+
+	<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+		<script src="../js/respond.min.js"></script>
+	<![endif]-->
+
+	<style>
+		#login-logo {
+			background: none repeat scroll 0 0 #eeeeee;
+		}
+	</style>
+
+</head>
+<body id="login-page-full" ng-controller="loginCtrl">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="login-box">
+					<div id="login-box-holder">
+						<div class="row">
+							<div class="col-xs-12">
+								<header id="login-header">
+									<div id="login-logo">
+										<img src="images/logo.png" alt=""/>
+									</div>
+									<!-- <h2 class="text-center">Log in</h2> -->
+								</header>
+								<div id="login-box-inner">
+									<!-- <h4 class="text-center">Log in</h4> -->
+									<form role="form" name="loginForm" ng-submit="login(loginForm)">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-user"></i></span>
+											<input name="email" ng-model="loginData.email" class="form-control" type="text" placeholder="Email address">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-key"></i></span>
+											<input name="password" ng-model="loginData.password" type="password" class="form-control" placeholder="Password">
+										</div>
+										<div id="remember-me-wrapper">
+											<div class="row">
+												<a href="reset_password.html" id="login-forget-link" class="col-xs-6" style="float: right">
+													Forgot password?
+												</a>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">
+												<button type="submit" class="btn btn-primary col-xs-12">Login</button>
+											</div>
+										</div>										
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+										
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>	
+	
+	<!-- global scripts -->
+	<script src="app/cube/demo-skin-changer.js"></script> <!-- only for demo -->
+	<script src="../../framework/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../framework/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../framework/node_modules/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
+	<script src="../../framework/node_modules/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
+	
+	<!-- theme scripts -->
+	<script src="../../framework/node_modules/zakumi-admin//js/scripts.js"></script>
+	
+</body>
+</html>
+
+<!-- angular libs -->
+<script src="../../framework/node_modules/angular/angular.min.js"></script>
+
+<!-- this page specific inline scripts -->
+<script src="app/config.js"></script>
+<script src="app/login.js"></script>
+

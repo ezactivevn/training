@@ -1,0 +1,21 @@
+table.dataTable tbody tr.selected {
+    background-color: #ed1c24 !important;
+}
+
+.DTE_Field .control-label {
+    text-align: left;
+}
+
+.DTE_Field_Type_ckeditor {
+    display: inline-block;
+}
+
+.DTE_Field_Type_title label.control-label {
+    margin: 0 0 5px 0;
+}
+
+.btn-collapse:hover, .btn-collapse[aria-expanded="true"] {
+    background-color: #ed1c24;
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
