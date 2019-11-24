@@ -26,7 +26,7 @@ var DEBUG_ENVIRONMENT = false;
 var ROOT_PATH = '';
 if (rurl.indexOf("localhost") > 0) {
 	// local mode
-	ROOT_PATH = 'http://localhost/sgb/';
+	ROOT_PATH = 'http://localhost/training/';
 	DEVELOPMENT_ENVIRONMENT = true;
 	DEBUG_ENVIRONMENT = true;
 
@@ -36,7 +36,7 @@ if (rurl.indexOf("localhost") > 0) {
 	    window.location.href = rurl.replace('http://','https://');
 	}
 	// server mode
-	ROOT_PATH = 'https://www.abc.com/sgb/';
+	ROOT_PATH = 'https://www.abc.com/training/';
 	PRODUCTION_ENVIRONMENT = true;
 }
 

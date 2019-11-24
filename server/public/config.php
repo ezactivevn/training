@@ -20,7 +20,7 @@ if (strpos($url_temp, 'localhost')) {
 	define('PUSH_LIVE', false);
 	define('PUSH_TEST', true);
 
-	define('DB_NAME', 'ezactive_sgb');
+	define('DB_NAME', 'training');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
 	define('DB_HOST', 'localhost');
@@ -45,7 +45,7 @@ if (strpos($url_temp, 'localhost')) {
 	define('PUSH_LIVE', true);
 	define('PUSH_TEST', false);
 
-	define('DB_NAME', 'ezactive_sgb');
+	define('DB_NAME', 'training');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
 	define('DB_HOST', '');

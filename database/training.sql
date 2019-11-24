@@ -124,7 +124,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `role`, `created_at`, `last_logon`, `session_id`, `accept_rules`) VALUES
-(1, 'SG', 'Basketball', '+6512345678', 'info@sgbasketball.com', '$2y$10$fluhfrdROK9FNaLtMCbO4.67qp2WKdpU7Tm0FsVMRcNbzewe..vKi', 9, '2019-11-06 22:46:40', '2019-11-12 14:49:32', 'qt9j3lalo9hnm22d306jgggm97', 0);
+(1, 'SG', 'Basketball', '+6512345678', 'info@sgbasketball.com', '$2y$10$fluhfrdROK9FNaLtMCbO4.67qp2WKdpU7Tm0FsVMRcNbzewe..vKi', 9, '2019-11-06 22:46:40', '2019-11-12 14:49:32', 'qt9j3lalo9hnm22d306jgggm97', 0),
+(2, 'Trainee', 'Nguyen', '12345678', 'trainee@gmail.com', '$2y$10$P0kItcm/ZkWUHTXdSRsQoeDFGEb5FYe23.P8R7iDesgFRed6owuju', 9, '2019-11-06 22:46:40', '2019-11-12 14:49:32', 'qt9j3lalo9hnm22d306jgggm97', 0);
 
 --
 -- Constraints for dumped tables
