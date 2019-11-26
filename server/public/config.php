@@ -9,16 +9,12 @@ if (strpos($url_temp, 'localhost')) {
 	define('DEBUG_ENVIRONMENT', true);
 
 	define('PAYPAL_LIVE', false);
-	define('PAYPAL_SANDBOX', true);
 	
 	define('BRAINTREE_LIVE', false);
 
 	define('MAIL_LIVE', false);
-	define('MAIL_TEST', true);
-	define('MAIL_TEST_ACCOUNT', 'ntusoftwareclub@gmail.com');
 
 	define('PUSH_LIVE', false);
-	define('PUSH_TEST', true);
 
 	define('DB_NAME', 'training');
 	define('DB_USER', 'root');
@@ -28,22 +24,18 @@ if (strpos($url_temp, 'localhost')) {
 	define('DEFAULT_TIMEZONE', 'Asia/Ho_Chi_Minh');
 
 	define('ADMIN_PATH', 'http://localhost/admin/');
-	define('APP_PATH', 'http://localhost/sgb/');
+	define('APP_PATH', 'http://localhost/training/');
 } else {
 	// webhost mode
 	define('DEBUG_ENVIRONMENT', false);
 
 	define('PAYPAL_LIVE', true);
-	define('PAYPAL_SANDBOX', false);
 
 	define('BRAINTREE_LIVE', true);
 
 	define('MAIL_LIVE', true);
-	define('MAIL_TEST', false);
-	define('MAIL_TEST_ACCOUNT', 'ntusoftwareclub@gmail.com');
 
 	define('PUSH_LIVE', true);
-	define('PUSH_TEST', false);
 
 	define('DB_NAME', 'training');
 	define('DB_USER', 'root');
@@ -52,8 +44,8 @@ if (strpos($url_temp, 'localhost')) {
 
 	define('DEFAULT_TIMEZONE', 'Asia/Hong_Kong');
 
-	define('ADMIN_PATH', 'https://www.abc.com/sgb/admin/');
-	define('APP_PATH', 'https://www.abc.com/sgb/');
+	define('ADMIN_PATH', 'https://www.abc.com/training/admin/');
+	define('APP_PATH', 'https://www.abc.com/training/');
 }
 
 define('CLUB_NAME', 'SG Basketball');
@@ -68,15 +60,16 @@ define('SMTP_UTF8', true);
 define('SMTP_FROM_MAIL', 'info@sgbasketball.com');
 define('SMTP_FROM_NAME', 'SG Basketball');
 
+define('MAIL_TEST_ACCOUNT', 'ntusoftwareclub@gmail.com');
+
 // Firebase Cloud Message
-#API access key from Google API's Console
 define('API_ACCESS_KEY', '');
 define('SENDER_ID', '');
 
+define('PUSH_TEST_DEVICE', '');
+
 // Stripe
 define('STRIPE_SECRET_KEY', '');
-
-define('PUSH_TEST_DEVICE', '');
 
 define('SERVER_PATH', APP_PATH . 'server/');
 define('PAGINATE_LIMIT', '5');
@@ -84,3 +77,4 @@ define('SIZE_LIMIT', 10 * 1024 * 1024);
 
 // DEFINE CONSTANTS
 define('USER_GUEST', 0);
+define('USER_ADMINISTRATOR', 9);

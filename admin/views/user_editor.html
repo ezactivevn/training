@@ -1,0 +1,266 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="clearfix">
+			<h1 class="pull-left">Users</h1>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="main-box-body clearfix">
+				<div class="table-responsive">
+					<table id="user_table" class="table table-striped table-bordered table-hover" cellspacing="0"
+						width="100%">
+						<thead>
+							<tr>
+								<th>Full name</th>
+								<th>Mobile</th>
+								<th>Email</th>
+								<th>Role</th>
+								<th>Created at</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" language="javascript" class="init">
+	$(document).ready(function () {
+
+		var table;
+		var editor = new $.fn.dataTable.Editor({
+			ajax: {
+				type: 'POST',
+				url: SERVER_PATH + "setUsers",
+				data: {},
+				dataType: 'json',
+				complete: function (response) {
+					var jsonData = JSON.parse(response.responseText);
+					// --- may need to reload
+					if (DEVELOPMENT_ENVIRONMENT) console.log('status = ' + jsonData.status);
+					if (jsonData.status == 'OK') {
+						table.ajax.reload();
+					}
+				},
+				error: function (xhr, status, error) {},
+			},
+			table: "#user_table",
+			formOptions: {
+				main: {
+					onBlur: 'none'
+				}
+			},
+			i18n: {
+				create: {
+					button: "New",
+					title: "Create new user",
+					submit: "Create"
+				},
+				edit: {
+                    button: "Edit",
+                    title: "Edit user",
+                    submit: "Update"
+                },
+				remove: {
+					button: "Delete",
+					title: "Delete user",
+					submit: "Delete",
+					confirm: {
+						_: "Are you sure you want to delete these users?",
+						1: "Are you sure you want to delete this user?"
+					}
+				},
+				error: {
+					system: "System error, please contact administrator."
+				},
+			},
+			fields: [{
+				label: "First name:",
+				name: "users.first_name"
+			}, {
+				label: "Last name:",
+				name: "users.last_name"
+			}, {
+				label: "Mobile:",
+				name: "users.mobile"
+			}, {
+				label: "Email:",
+				name: "users.email"
+			}, {
+				label: "Password:",
+				name: "users.password",
+				attr: {
+					placeholder: "New password"
+				}
+			}, {
+				label: "Role",
+				name: "users.role",
+				type: "radio",
+				options: [{
+						label: "Guest",
+						value: USER_GUEST
+					},
+					{
+						label: "Administrator",
+						value: USER_ADMINISTRATOR
+					}
+				],
+				def: USER_ADMINISTRATOR
+			}, ]
+		});
+
+		// hide password field when edit
+		editor.on('initEdit', function () {
+			editor.hide('users.password');
+		});
+		editor.on('initCreate', function () {
+			editor.show('users.password');
+		});
+
+		var table = $('#user_table').DataTable({
+			dom: '<"row"B><"col-sm-6"l><"col-sm-6"f>rt<"col-sm-6"i><"col-sm-6"p>',
+			stateSave: true,
+			deferRender: true,
+			ajax: {
+				url: SERVER_PATH + "getUsers",
+				type: 'POST',
+				data: {},
+				dataType: 'json',
+				complete: function (response) {},
+				error: function (xhr, status, error) {},
+			},
+			language: {
+				paginate: {
+					previous: '<i class="fa fa-chevron-left"></i>',
+					next: '<i class="fa fa-chevron-right"></i>'
+				}
+			},
+			columns: [{
+					data: null,
+					render: function (data, type, row) {
+						return data.users.first_name + ' ' + data.users.last_name;
+					},
+				},
+				{
+					data: 'users.mobile'
+				},
+				{
+					data: 'users.email'
+				},
+				{
+					data: null,
+					className: "center",
+					render: function (data, type, row) {
+						if (data.users.role == USER_GUEST)
+							return 'Guest';
+						else if (data.users.role == USER_ADMINISTRATOR)
+							return 'Administrator';
+						return 'Undefined';
+					}
+				},
+				{
+					data: 'users.created_at',
+					className: "center"
+				}
+			],
+			select: {
+				style: 'single'
+			},
+			order: [
+				[0, 'asc']
+			],
+			lengthMenu: [
+				[10, 25, 50, 100, -1],
+				[10, 25, 50, 100, "All"]
+			],
+			buttons: [{
+					extend: "create",
+					editor: editor
+				},
+				{
+					extend: "edit",
+					editor: editor
+				},
+				{
+					extend: "remove",
+					editor: editor
+				},
+				{
+					extend: "selectedSingle",
+					text: "Set Password",
+					action: function (e, dt, node, config) {
+						var user_id = table.rows({
+							selected: true
+						}).data()[0].users.id;
+						var email = table.rows({
+							selected: true
+						}).data()[0].users.email;
+
+						// set password for users forget password or use the reset password because the email doesnt come through
+						var set_password_editor = new $.fn.dataTable.Editor({
+							ajax: {
+								type: 'POST',
+								url: SERVER_PATH + "setPassword",
+								data: {
+									"user_id": user_id
+								},
+								dataType: 'json',
+								complete: function (response) {
+									// var jsonData = JSON.parse(response.responseText);
+								},
+								error: function (xhr, status, error) {
+									console.log(error);
+								},
+							},
+							formOptions: {
+								main: {
+									onBlur: 'none'
+								}
+							},
+							fields: [{
+								label: 'Email',
+								name: 'email',
+								def: email
+							}, {
+								label: 'New password',
+								name: 'new_password',
+								type: 'password'
+							}, {
+								label: 'Verify',
+								name: 'rnew_password',
+								type: 'password'
+							}]
+						});
+
+						// just allow to edit role
+						set_password_editor.on('initEdit', function () {
+							set_password_editor.disable('email');
+						});
+
+						set_password_editor
+							.title('Set Password')
+							.buttons({
+								label: "Save",
+								fn: function () {
+									this.submit();
+								}
+							})
+							.edit()
+							.open();
+					}
+				},
+				{
+					extend: 'colvis',
+					text: 'Columns'
+				}
+			]
+		});
+
+	});
+</script>

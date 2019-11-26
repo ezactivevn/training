@@ -44,9 +44,10 @@ var	SERVER_PATH = ROOT_PATH + 'server/admin/';
 var SYSTEM_IMAGE_PATH = ROOT_PATH + 'images/system/';
 var PRODUCT_IMAGE_PATH = ROOT_PATH + 'images/product/';
 
+var USER_GUEST = 0;
 var USER_ADMINISTRATOR = 9;
 
 /**
  * DEFINE PERMISSION
  */
-var USER_ADMINISTRATOR_PERMISSION = ['dashboardCtrl', 'profileCtrl', 'settingsCtrl', 'mainCtrl', 'logoutCtrl'];
+var USER_ADMINISTRATOR_PERMISSION = ['dashboardCtrl', 'tablesCtrl', 'mainCtrl', 'logoutCtrl'];

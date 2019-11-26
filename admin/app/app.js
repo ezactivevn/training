@@ -26,16 +26,26 @@ app.config(['$routeProvider', function ($routeProvider) {
 	console.log('app.config - routeProvider');
 
 	$routeProvider
+		// Default
 		.when("/", {
 			redirectTo: '/dashboard'
 		})
 
+		// Dashboard
 		.when("/dashboard", {
 			templateUrl: "views/dashboard.html",
 			controller: "dashboardCtrl",
 			title: 'Dashboard'
 		})
 
+		// Tables
+        .when("/tables/user_editor", {
+			templateUrl: "views/user_editor.html",
+			controller: "tablesCtrl", 
+			title: 'Users'
+		})
+
+		// System
 		.when("/profile", {
 			templateUrl: "views/profile.html",
 			controller: "profileCtrl",
@@ -60,6 +70,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.run(['$location', '$rootScope', '$http', function ($location, $rootScope, $http) {
+	// check permission
 	$rootScope.$on('$routeChangeStart', function (event, next, current) {
 		console.log(next);
 		if ($rootScope.user_role != undefined) {
@@ -68,6 +79,7 @@ app.run(['$location', '$rootScope', '$http', function ($location, $rootScope, $h
 				$location.path("/error-404");
 		}
 	});
+
 	$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 		$rootScope.title = current.$$route.title;
 	});
@@ -133,6 +145,7 @@ app.run(['$location', '$rootScope', '$http', function ($location, $rootScope, $h
 				if (response.status == "OK") {
 					$rootScope.user_name = response.info.first_name + ' ' + response.info.last_name;
 					$rootScope.user_role = response.info.role;
+					$rootScope.initSideMenu();
 				} else {
 					alert(response.message);
 					location.href = 'login.html';
@@ -141,10 +154,33 @@ app.run(['$location', '$rootScope', '$http', function ($location, $rootScope, $h
 			});
 	};
 
+	$rootScope.initSideMenu = function() {
+
+		// Tables
+		var html_tables_component =
+			'<a href="" class="dropdown-toggle">' +
+				'<i class="fa fa-table"></i>' +
+				'<span>Tables</span>' +
+				'<i class="fa fa-angle-right drop-icon"></i>' +
+			'</a>' +
+			'<ul class="submenu">' +
+				'<li>' +
+					'<a data-match-route="/tables/user_editor" href="#/tables/user_editor">' +
+						'Users' +
+					'</a>' +
+				'</li>' +
+			'</ul>';
+
+		// Administrator
+		if ($rootScope.user_role == USER_ADMINISTRATOR) {
+			$('#tablesContent').html(html_tables_component);
+		}
+        
+    };
+
 	$rootScope.getUser();
 
 	console.log('app.run - before return');
-
 
 	// override confirm function to implement more options, make sure to place after BootstrapDialog.js file is loaded
 	BootstrapDialog.confirm = function () {

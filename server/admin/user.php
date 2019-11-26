@@ -170,6 +170,60 @@ class AdminUser {
        _json_echo('logout', $response);
     }
 
+    function getUsers() {
+        require_once(APP_ROOT . '/editor/app/users.php');
+    }
+
+    function setUsers() {
+        require_once(APP_ROOT . '/editor/app/users.php');
+    }
+
+    function setPassword() {
+
+        // set basic data
+        $response = array('status' => 'ERROR', 'message' => 'none');
+
+        $apost = $_POST;
+        $data = $apost['data'];
+        $new_password = $data['keyless']['new_password'];
+        $rnew_password = $data['keyless']['rnew_password'];
+
+        $user_id = $_POST['user_id'];
+
+        $user = $this->Admin->selectOne("SELECT * FROM users WHERE id = $user_id");
+
+        $fieldErrors = array();
+
+        if ($user == null) {
+            $response['message'] = 'Invalid user!';
+        } else {
+            if (trim($new_password) == "") {
+                $fieldErrors[] = array("name" => "new_password", "status" => "This field is required");
+            }
+            if (trim($rnew_password) == "") {
+                $fieldErrors[] = array("name" => "rnew_password", "status" => "This field is required");
+            } else if ($new_password != $rnew_password) {
+                $fieldErrors[] = array("name" => "rnew_password", "status" => "New password does not match retyped password!");
+            } else {
+                $this->Admin->update('UPDATE users SET password = "' . password_hash($new_password, PASSWORD_DEFAULT) . '" WHERE id = '. $user_id);
+                $response['status'] = 'OK';
+                $response['data'] = $data;
+                $response['message'] = 'The new password has been set successfully!'; 
+            }
+        }
+
+        if (count($fieldErrors) > 0) {
+            $response = array('status' => 'DATA_ERROR', 'message' => "error on data input");
+            $data = array();
+            $response['data'] = $data;
+            $response['fieldErrors'] = $fieldErrors;
+            _json_echo('setPassword', $response);
+            return;        
+        }
+
+        _json_echo('setPassword', $response);
+    }
+
     function afterAction() {
     
     }

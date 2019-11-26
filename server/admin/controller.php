@@ -28,6 +28,9 @@ class AdminController {
 				case "getInfoUser":			$this->user->getInfoUser();				break;
 				case "resetPassword":		$this->user->resetPassword();			break;
 				case "changePassword":		$this->user->changePassword();			break;
+				case "getUsers":			$this->user->getUsers();				break;
+				case "setUsers":			$this->user->setUsers();				break;
+				case "setPassword":			$this->user->setPassword();				break;
 				
 				default:
 					error_log ('Action not valid = ' . print_r($action, true));
