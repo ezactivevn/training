@@ -1,0 +1,57 @@
+1. BASIC SETUP //////////////////////
+
+# --- Download tools
+	. SourceTree 3.2.1 - https://www.sourcetreeapp.com/download-archives
+	. XAMPP 7.3.1 - https://www.apachefriends.org/index.html
+	. Android SDK 29.0.5 - https://www.techspot.com/downloads/5425-android-sdk.html
+	. VisualStudio 1.40.2 - https://visualstudio.microsoft.com/downloads/
+	. NodeJS 12.13.1 - https://nodejs.org/en/download/
+	. npm install -g ionic cordova
+
+# --- Download training source
+	. run SourceTree.
+	. clone: https://github.com/ezactivevn/training
+	. to c:\dev\training
+	
+# --- Build database
+	. run XAMPP - start Apache, MySQL, MySQL Admin
+	. view http://localhost/phpmyadmin
+	. create table: 'training'
+	. import data from: /dev/training/database/training.sql
+
+# --- Test client
+	. cd /dev/training/client
+	. ionic serve
+	. LOGIN:
+		Email: trainee@gmail.com
+		PW: 12345
+
+# --- Test admin
+	. http://localhost/training
+	LOGIN:
+		Email: trainee@gmail.com
+		PW: 12345
+
+2. TRAINING - NTU Sport Center (Nhà huấn luyện đa năng và khu tập luyện thể thao) /////////////////
+
+# --- SESSION 1 - Database
+	. Add data to database: 'training'
+	. Add 2 volleyball courts and 2 basketball courts
+	. Add a new user
+
+# --- SESSION 2 - Server
+	. Add method getLocation() to model: locations (server/client/location.php)
+
+# --- SESSION 3 - Client
+	. Change SG Basketball -> NTU Sport Center (Nhà huấn luyện đa năng và khu tập luyện thể thao)
+	http://www.ntu.edu.vn/ttpvth/vi-vn/k%c3%bdt%c3%bacx%c3%a1/c%c6%a1s%e1%bb%9fv%e1%ba%adtch%e1%ba%a5t.aspx?idcd=852&idnews=2428
+	. Add a picture of NTU Sport Center
+	. Book a volleyball court (sân bóng chuyền) or a basketball court (sân bóng rổ)
+	. Pay by cash
+	
+# --- SESSION 4 - Admin
+	. Add number of users to Dashboard
+
+
+
+
