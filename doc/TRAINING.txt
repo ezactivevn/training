@@ -1,11 +1,11 @@
 1. BASIC SETUP //////////////////////
 
 # --- Download tools
-	. SourceTree 3.2.1 - https://www.sourcetreeapp.com/download-archives
+	. SourceTree [Latest Version] - https://www.sourcetreeapp.com/
 	. XAMPP 7.3.1 - https://www.apachefriends.org/index.html
-	. Android SDK 29.0.5 - https://www.techspot.com/downloads/5425-android-sdk.html
-	. VisualStudio 1.40.2 - https://visualstudio.microsoft.com/downloads/
-	. NodeJS 12.13.1 - https://nodejs.org/en/download/
+	. Android SDK [Latest Version] - https://developer.android.com/studio#downloads
+	. Visual Studio Code [Latest Version] - https://code.visualstudio.com/
+	. NodeJS [Latest LTS Version] - https://nodejs.org/en/download/
 	. npm install -g ionic cordova
 
 # --- Download training source
@@ -51,6 +51,9 @@
 	
 # --- SESSION 4 - Admin
 	. Add number of users to Dashboard
+	. Add Tables > Courts to manage courts
+	. Add Bookings module on the side menu to view the report on court booking
+
 
 
 
