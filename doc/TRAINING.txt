@@ -16,7 +16,7 @@
 # --- Build database
 	. run XAMPP - start Apache, MySQL, MySQL Admin
 	. view http://localhost/phpmyadmin
-	. create table: 'training'
+	. create database: 'training'
 	. import data from: /dev/training/database/training.sql
 
 # --- Test client
