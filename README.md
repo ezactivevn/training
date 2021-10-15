@@ -2,9 +2,9 @@
 
 ## Training Plan
 
-1. [Program Basic & Advance *(Weeks 1, 2, 3, 4)*](#Program-Basic-&-Advance)
+1. [Program Basic & Advance *(Weeks 1, 2, 3, 4)*](#Program-Basic--Advance)
 
-2. [MVC & Framework *(Weeks 5, 6)*](#MVC-&-Framework)
+2. [MVC & Framework *(Weeks 5, 6)*](#MVC--Framework)
 
 3. [Virtual Project *(Weeks 7, 8)*](#Virtual-Project)
 
@@ -86,7 +86,7 @@
 > **Acceptance Criteria**
 >
 > - Make folder *Dev*
-> - Clone reposistory [framework](https://github.com/ezactivevn/training) into *Dev* folder
+> - Clone reposistory [framework](https://github.com/ezactivevn/framework) into *Dev* folder
 > - Clone reposistory [training](https://github.com/ezactivevn/training) into *Dev* folder
 
 ## Virtual Project
