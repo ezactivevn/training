@@ -149,7 +149,7 @@
         "jasmine": "^2.5.3",
         "jasmine-reporters": "^2.3.2",
         "jasmine-spec-reporter": "^4.2.1",
-        "karma": "^1.5.0",
+        "karma": "^6.3.16",
         "karma-chrome-launcher": "^2.0.0",
         "karma-jasmine": "^1.1.0",
         "karma-jasmine-diff-reporter": "^2.0.0",
